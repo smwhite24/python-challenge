@@ -6,8 +6,8 @@ import csv
 
 # read in csv file 
 file = os.path.join("/Users/sarahwhite/workspace/python_challenge_repo/python-challenge/PyBank/Resources/budget_data.csv")
-with open(file,'r') as csvfile:
-    csvreader = csv.reader(csvfile, delimiter = ',')
+with open(file,) as csvfile:
+    csvreader = csv.reader(csvfile)
     header = next(csvreader)
     
 #create lists to store values 
