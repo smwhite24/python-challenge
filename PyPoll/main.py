@@ -6,7 +6,7 @@ election_data = os.path.join("/Users/sarahwhite/workspace/python_challenge_repo/
 candidates = []
 
 # A list to store votes recieved for candidate
-num_votes = []
+candidate_votes = []
 
 # A list to store the percentage of total votes each candidate recieves
 percent_votes = []
@@ -30,21 +30,21 @@ with open(election_data, newline = "") as csvfile:
         if row[2] not in candidates:
             candidates.append(row[2])
             index = candidates.index(row[2])
-            num_votes.append(1)
+            candidate_votes.append(1)
         else:
             index = candidates.index(row[2])
-            num_votes[index] += 1
+            candidate_votes[index] += 1
     
     # Add to percent_votes list 
-    for votes in num_votes:
+    for votes in candidate_votes:
         percentage = (votes/total_votes) * 100
         percentage = round(percentage)
         percentage = "%.3f%%" % percentage
         percent_votes.append(percentage)
     
     #  Identify winner
-    winner = max(num_votes)
-    index = num_votes.index(winner)
+    winner = max(candidate_votes)
+    index = candidate_votes.index(winner)
     winning_candidate = candidates[index]
 
 # Displaying results
@@ -53,7 +53,7 @@ print("--------------------------")
 print(f"Total Votes: {str(total_votes)}")
 print("--------------------------")
 for x in range(len(candidates)):
-    print(f"{candidates[x]}: {str(percent_votes[x])} ({str(num_votes[x])})")
+    print(f"{candidates[x]}: {str(percent_votes[x])} ({str(candidate_votes[x])})")
 print("--------------------------")
 print(f"Winner: {winning_candidate}")
 print("--------------------------")
@@ -73,7 +73,7 @@ with open("Election_Results.txt", "w") as new:
     new.write("--------------------------")
     new.write("\n")
     for x in range(len(candidates)):
-        new.write(f"{candidates[x]}: {str(percent_votes[x])} ({str(num_votes[x])})")
+        new.write(f"{candidates[x]}: {str(percent_votes[x])} ({str(candidate_votes[x])})")
         new.write("\n")
     new.write("--------------------------")
     new.write("\n")
