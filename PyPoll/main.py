@@ -58,17 +58,51 @@ print("--------------------------")
 print(f"Winner: {winning_candidate}")
 print("--------------------------")
 
+
+
+
 # Exporting to .txt file
-output = open("Election_Results.txt", "w")
-line1 = "Election Results"
-line2 = "--------------------------"
-line3 = str(f"Total Votes: {str(total_votes)}")
-line4 = str("--------------------------")
-output.write('{}\n{}\n{}\n{}\n'.format(line1, line2, line3, line4))
-for i in range(len(candidates)):
-    line = str(f"{candidates[i]}: {str(percent_votes[i])} ({str(num_votes[i])})")
-    output.write('{}\n'.format(line))
-line5 = "--------------------------"
-line6 = str(f"Winner: {winning_candidate}")
-line7 = "--------------------------"
-output.write('{}\n{}\n{}\n'.format(line5, line6, line7))
+with open("Election_Results.txt", "w") as new:
+
+    new.write("Election Results")
+    new.write("\n")
+    new.write("--------------------------")
+    new.write("\n")
+    new.write(f"Total Votes: {str(total_votes)}")
+    new.write("\n")
+    new.write("--------------------------")
+    new.write("\n")
+    for x in range(len(candidates)):
+        new.write(f"{candidates[x]}: {str(percent_votes[x])} ({str(num_votes[x])})")
+        new.write("\n")
+    new.write("--------------------------")
+    new.write("\n")
+    new.write(f"Winner: {winning_candidate}")
+    new.write("\n")
+    new.write("--------------------------")
+
+
+
+
+
+
+
+
+
+
+
+
+# # Exporting to .txt file
+# output = open("Election_Results.txt", "w")
+# line1 = "Election Results"
+# line2 = "--------------------------"
+# line3 = str(f"Total Votes: {str(total_votes)}")
+# line4 = str("--------------------------")
+# output.write('{}\n{}\n{}\n{}\n'.format(line1, line2, line3, line4))
+# for i in range(len(candidates)):
+#     line = str(f"{candidates[i]}: {str(percent_votes[i])} ({str(num_votes[i])})")
+#     output.write('{}\n'.format(line))
+# line5 = "--------------------------"
+# line6 = str(f"Winner: {winning_candidate}")
+# line7 = "--------------------------"
+# output.write('{}\n{}\n{}\n'.format(line5, line6, line7))
