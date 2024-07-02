@@ -2,13 +2,13 @@ import os
 import csv
 election_data = os.path.join("/Users/sarahwhite/workspace/python_challenge_repo/python-challenge/PyPoll/Resources/election_data.csv")
 
-# A list to store Candidates
+# list to store the Candidates
 candidates = []
 
-# A list to store votes recieved for candidate
+# list to store votes recieved for each candidate
 candidate_votes = []
 
-# A list to store the percentage of total votes each candidate recieves
+# list to store the percentage of total votes each candidate gets
 percent_votes = []
 
 # vote counter to tally votes
@@ -19,13 +19,13 @@ with open(election_data, newline = "") as csvfile:
     csv_header = next(csvreader)
 
     for row in csvreader:
-        # Add to our vote counter 
+    # add votes to the counter 
         total_votes += 1 
 
         
-        # Loop through the values:
-        # If the candidate is not on our list, add their name and a vote.
-        # If name is already on our list, just add a vote tp the candidate.
+    # Loop through the values:
+    # If the candidate is not on the list, add  name and a vote.
+    # If name is on list, just add a vote for that candidate.
         
         if row[2] not in candidates:
             candidates.append(row[2])
@@ -35,19 +35,19 @@ with open(election_data, newline = "") as csvfile:
             index = candidates.index(row[2])
             candidate_votes[index] += 1
     
-    # Add to percent_votes list 
+# Add to percent_votes list 
     for votes in candidate_votes:
         percentage = (votes/total_votes) * 100
         percentage = round(percentage)
         percentage = "%.3f%%" % percentage
         percent_votes.append(percentage)
     
-    #  Identify winner
+#  Identify the  winner
     winner = max(candidate_votes)
     index = candidate_votes.index(winner)
     winning_candidate = candidates[index]
 
-# Displaying results
+# print final results
 print("Election Results")
 print("--------------------------")
 print(f"Total Votes: {str(total_votes)}")
@@ -61,7 +61,7 @@ print("--------------------------")
 
 
 
-# Exporting to .txt file
+# Export results to .txt file
 with open("Election_Results.txt", "w") as new:
 
     new.write("Election Results")
